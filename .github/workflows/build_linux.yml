@@ -18,5 +18,4 @@ jobs:
       run: |
         git clone https://github.com/FFmpeg/FFmpeg.git
         cd FFmpeg
-        ls
-        configure
+        ./configure -h
