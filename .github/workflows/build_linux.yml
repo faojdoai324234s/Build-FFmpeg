@@ -19,10 +19,8 @@ jobs:
       
     - name: Build library
       run: |
-        sudo apt-get update && sudo apt-get -y install nasm
         git clone https://github.com/FFmpeg/FFmpeg.git
         cd FFmpeg
-        ./configure -h
         ./configure \
         --arch=x86_64 \
         --target-os=linux \
@@ -37,4 +35,4 @@ jobs:
       run: cd FFmpeg && make
 
     - name: Make install
-      run: cd FFmpeg && make install
+      run: cd FFmpeg && sudo make install
