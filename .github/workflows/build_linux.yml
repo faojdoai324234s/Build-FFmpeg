@@ -34,7 +34,9 @@ jobs:
         --disable-decoder=libdav1d
         
     - name: Make
-      run: ls && ./make
+    - working-directory: FFmpeg
+      run: ls && make
 
     - name: Make install
+    - working-directory: FFmpeg
       run: make install
