@@ -1,0 +1,21 @@
+name: Linux Build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build curl
+      run: |
+        git clone https://github.com/FFmpeg/FFmpeg.git
+        cd FFmpeg
+        configure -h
