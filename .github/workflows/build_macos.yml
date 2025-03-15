@@ -22,10 +22,12 @@ jobs:
     - name: Build library
       run: |
         git clone https://github.com/FFmpeg/FFmpeg.git
+        mkdir upload
         cd FFmpeg
         ./configure -h
         ./configure \
         --arch=x86_64 \
+        --prefix=upload \
         --enable-gpl \
         --disable-static \
         --enable-shared \
@@ -43,6 +45,6 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: macOS-artifact
-        path: ${{github.workspace}}
+        path: upload
         if-no-files-found: ignore
         retention-days: 0
