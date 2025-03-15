@@ -27,7 +27,7 @@ jobs:
         ./configure -h
         ./configure \
         --arch=x86_64 \
-        --prefix=upload \
+        --prefix=${{github.workspace}}/upload \
         --enable-gpl \
         --disable-static \
         --enable-shared \
@@ -45,6 +45,6 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: macOS-artifact
-        path: upload
+        path: ${{github.workspace}}/upload
         if-no-files-found: ignore
         retention-days: 0
