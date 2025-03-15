@@ -34,7 +34,7 @@ jobs:
         --disable-decoder=libdav1d
         
     - name: Make
-      run: make
+      run: ls && ./make
 
     - name: Make install
       run: make install
