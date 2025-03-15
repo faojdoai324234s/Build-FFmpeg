@@ -20,10 +20,12 @@ jobs:
     - name: Build library
       run: |
         git clone https://github.com/FFmpeg/FFmpeg.git
+        mkdir upload
         cd FFmpeg
         ./configure \
         --arch=x86_64 \
         --target-os=linux \
+        --prefix=upload \
         --enable-gpl \
         --disable-static \
         --enable-shared \
@@ -47,14 +49,6 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: Linux-artifact
-        path: ${{github.workspace}}/FFmpeg/RELEASE
-        if-no-files-found: ignore
-        retention-days: 0
-        
-    - name: Upload artifact 1
-      uses: actions/upload-artifact@v4
-      with:
-        name: Linux-artifact-1
-        path: ${{github.workspace}}
+        path: ${{github.workspace}}/upload
         if-no-files-found: ignore
         retention-days: 0
