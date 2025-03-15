@@ -36,11 +36,25 @@ jobs:
 
     - name: Make install
       run: cd FFmpeg && sudo make install
+
+    - name: List files
+      run: echo "Listing files..." && ls
+    
+    - name: List files again
+      run: echo "List files again..." && ls ${{github.workspace}}/FFmpeg
       
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
         name: Linux-artifact
-        path: /usr/local/share/ffmpeg
+        path: ${{github.workspace}}/FFmpeg/bin
+        if-no-files-found: ignore
+        retention-days: 0
+        
+    - name: Upload artifact 1
+      uses: actions/upload-artifact@v4
+      with:
+        name: Linux-artifact-1
+        path: ${{github.workspace}}/lib
         if-no-files-found: ignore
         retention-days: 0
