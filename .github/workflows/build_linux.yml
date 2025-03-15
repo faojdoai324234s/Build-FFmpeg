@@ -16,6 +16,7 @@ jobs:
     - uses: actions/checkout@v4
     - name: Build library
       run: |
+        sudo apt-get update && sudo apt-get -y install nasm
         git clone https://github.com/FFmpeg/FFmpeg.git
         cd FFmpeg
         ./configure -h
