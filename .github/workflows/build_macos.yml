@@ -1,0 +1,40 @@
+name: macOS Build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: macos-13
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install dependencies
+      run: |
+        brew install automake fdk-aac git lame libass libtool libvorbis libvpx \
+        opus sdl shtool texi2html theora wget x264 x265 xvid nasm
+      
+    - name: Build library
+      run: |
+        git clone https://github.com/FFmpeg/FFmpeg.git
+        cd FFmpeg
+        ./configure -h
+        ./configure \
+        --arch=x86_64 \
+        --enable-gpl \
+        --disable-static \
+        --enable-shared \
+        --disable-programs \
+        --disable-doc \
+        --disable-decoder=libdav1d
+        
+    - name: Make
+      run: cd FFmpeg && make
+
+    - name: Make install
+      run: cd FFmpeg && sudo make install
