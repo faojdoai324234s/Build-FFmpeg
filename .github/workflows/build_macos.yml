@@ -38,3 +38,11 @@ jobs:
 
     - name: Make install
       run: cd FFmpeg && sudo make install
+      
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: macOS-artifact
+        path: /usr/local/share/ffmpeg
+        if-no-files-found: ignore
+        retention-days: 0
