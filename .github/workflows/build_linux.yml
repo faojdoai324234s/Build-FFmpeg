@@ -14,8 +14,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Build curl
+    - name: Build library
       run: |
         git clone https://github.com/FFmpeg/FFmpeg.git
         cd FFmpeg
-        configure -h
+        ls
+        configure
