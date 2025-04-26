@@ -24,6 +24,12 @@ jobs:
       run: |
         git clone https://github.com/FFmpeg/FFmpeg.git
         mkdir upload
+
+    - name: Check link
+      working-directory: ${{github.workspace}}/FFmpeg
+      shell: msys2 {0}
+      run: >-
+        which link.exe
         
     - name: Build library
       working-directory: ${{github.workspace}}/FFmpeg
