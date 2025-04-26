@@ -19,6 +19,7 @@ jobs:
       run: choco install yasm
       
     - name: Build library
+      shell: cmd
       run: |
         git clone https://github.com/FFmpeg/FFmpeg.git
         mkdir upload
@@ -33,15 +34,19 @@ jobs:
         --disable-decoder=libdav1d
         
     - name: Make
+      shell: cmd
       run: cd FFmpeg && make
 
     - name: Make install
+      shell: cmd
       run: cd FFmpeg && make install
 
     - name: List files
+      shell: cmd
       run: echo "Listing files..." && ls ${{github.workspace}}/upload
     
     - name: List files again
+      shell: cmd
       run: echo "List files again..." && ls ${{github.workspace}}/FFmpeg
       
     - name: Upload artifact
