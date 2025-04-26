@@ -1,0 +1,53 @@
+name: Windows Build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: win-2019
+
+    steps:
+    - uses: actions/checkout@v4
+    - uses: ilammy/msvc-dev-cmd@v1
+    - name: Install dependencies
+      run: choco install yasm
+      
+    - name: Build library
+      run: |
+        git clone https://github.com/FFmpeg/FFmpeg.git
+        mkdir upload
+        cd FFmpeg
+        ./configure ^
+        --arch=x86_64 ^
+        --target-os=win64 ^
+        --toolchain=msvc ^
+        --prefix=${{github.workspace}}/upload ^
+        --enable-gpl ^
+        --disable-doc ^
+        --disable-decoder=libdav1d
+        
+    - name: Make
+      run: cd FFmpeg && make
+
+    - name: Make install
+      run: cd FFmpeg && make install
+
+    - name: List files
+      run: echo "Listing files..." && ls ${{github.workspace}}/upload
+    
+    - name: List files again
+      run: echo "List files again..." && ls ${{github.workspace}}/FFmpeg
+      
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: Windows-artifact
+        path: ${{github.workspace}}/upload
+        if-no-files-found: ignore
+        retention-days: 0
