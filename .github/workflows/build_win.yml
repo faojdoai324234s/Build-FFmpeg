@@ -29,13 +29,13 @@ jobs:
       working-directory: ${{github.workspace}}/FFmpeg
       shell: msys2 {0}
       run: >-
-        ./configure ^
-        --arch=x86_64 ^
-        --target-os=win64 ^
-        --toolchain=msvc ^
-        --prefix=${{github.workspace}}/upload ^
-        --enable-gpl ^
-        --disable-doc ^
+        ./configure
+        --arch=x86_64
+        --target-os=win64
+        --toolchain=msvc
+        --prefix=${{github.workspace}}/upload
+        --enable-gpl
+        --disable-doc
         --disable-decoder=libdav1d
         
     - name: Make
