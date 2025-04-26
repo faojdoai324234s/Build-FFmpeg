@@ -28,7 +28,7 @@ jobs:
     - name: Delete wrong link.exe
       shell: msys2 {0}
       run: >-
-        rm /usr/bin/link.exe
+        which link.exe
         
     - name: Build library
       working-directory: ${{github.workspace}}/FFmpeg
