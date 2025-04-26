@@ -25,17 +25,15 @@ jobs:
         git clone https://github.com/FFmpeg/FFmpeg.git
         mkdir upload
 
-    - name: Check link
-      working-directory: ${{github.workspace}}/FFmpeg
+    - name: Delete wrong link.exe
       shell: msys2 {0}
       run: >-
-        which link.exe
+        rm /usr/bin/link.exe
         
     - name: Build library
       working-directory: ${{github.workspace}}/FFmpeg
       shell: msys2 {0}
       run: >-
-        msys2_shell.cmd -use-full-path
         ./configure
         --arch=x86_64
         --target-os=win64
