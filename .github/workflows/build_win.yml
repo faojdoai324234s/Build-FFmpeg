@@ -28,6 +28,7 @@ jobs:
     - name: Build library
       working-directory: ${{github.workspace}}/FFmpeg
       shell: msys2 {0}
+      run: |
         ./configure ^
         --arch=x86_64 ^
         --target-os=win64 ^
