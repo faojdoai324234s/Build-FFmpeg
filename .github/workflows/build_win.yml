@@ -25,6 +25,7 @@ jobs:
         git clone https://github.com/FFmpeg/FFmpeg.git
         mkdir upload
         setx MSYS2_PATH_TYPE "inherit"
+        msys2_shell.cmd -use-full-path
 
     - name: Delete wrong link.exe
       shell: msys2 {0}
