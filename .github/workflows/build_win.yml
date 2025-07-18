@@ -26,8 +26,7 @@ jobs:
     - name: Install dependencies
       shell: msys2 {0}
       run: >-
-        pacman -S --noconfirm &&
-        pacman -S make &&
+        pacman -S --noconfirm make &&
         pacman -S diffutils &&
         pacman -S yasm &&
         pacman -S nasm &&
