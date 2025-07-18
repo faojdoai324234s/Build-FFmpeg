@@ -27,9 +27,9 @@ jobs:
       shell: msys2 {0}
       run: >-
         pacman -S --noconfirm make &&
-        pacman -S diffutils &&
-        pacman -S yasm &&
-        pacman -S nasm &&
+        pacman -S --noconfirm diffutils &&
+        pacman -S --noconfirm yasm &&
+        pacman -S --noconfirm nasm &&
         mv /usr/bin/link.exe /usr/bin/link.exe.bak
         
     - name: Clone FFmpeg
