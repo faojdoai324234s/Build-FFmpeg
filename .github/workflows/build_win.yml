@@ -21,7 +21,6 @@ jobs:
       shell: cmd
       run: |
         set MSYS2_PATH_TYPE=inherit
-        C:\msys64\msys2_shell.cmd
         
     - name: Install dependencies
       shell: msys2 {0}
@@ -33,9 +32,8 @@ jobs:
         mv /usr/bin/link.exe /usr/bin/link.exe.bak
 
     - name: Check link.exe
-      shell: cmd
+      shell: msys2 {0}
       run: |
-        C:\msys64\msys2_shell.cmd
         which link.exe
         
     - name: Clone FFmpeg
@@ -46,9 +44,8 @@ jobs:
         
     - name: Build library
       working-directory: ${{github.workspace}}/FFmpeg
-      shell: cmd
+      shell: msys2 {0}
       run: |
-        C:\msys64\msys2_shell.cmd
         CC=cl && ./configure --arch=x86_64 --target-os=win64 --toolchain=msvc --prefix=${{github.workspace}}\upload --enable-gpl --disable-doc --disable-decoder=libdav1d
         
     - name: Make
