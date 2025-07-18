@@ -55,14 +55,6 @@ jobs:
       shell: msys2 {0}
       run: make install
       
-    - name: List files
-      shell: cmd
-      run: echo "Listing files..." && ls ${{github.workspace}}/upload
-    
-    - name: List files again
-      shell: cmd
-      run: echo "List files again..." && ls ${{github.workspace}}/FFmpeg
-      
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
