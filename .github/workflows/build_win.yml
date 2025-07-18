@@ -16,24 +16,19 @@ jobs:
     - uses: actions/checkout@v4
     - uses: ilammy/msvc-dev-cmd@v1
     - uses: msys2/setup-msys2@v2
-
-    - name: Setup MSYS2
-      shell: cmd
-      run: |
-        set MSYS2_PATH_TYPE=inherit
-        
-    - name: Install dependencies
-      shell: msys2 {0}
-      run: >-
-        pacman -S --noconfirm make &&
-        pacman -S --noconfirm diffutils &&
-        pacman -S --noconfirm yasm &&
-        pacman -S --noconfirm nasm &&
-        mv /usr/bin/link.exe /usr/bin/link.exe.bak
+      with:
+        install: >-
+          diffutils
+          make
+          nasm
+          yasm
+        path-type: inherit
+        update: true
 
     - name: Check link.exe
       shell: msys2 {0}
       run: |
+        mv /usr/bin/link.exe /usr/bin/link.exe.bak &&
         which link.exe
         
     - name: Clone FFmpeg
