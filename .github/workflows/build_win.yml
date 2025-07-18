@@ -35,7 +35,7 @@ jobs:
         mkdir upload
         git clone https://github.com/faojdoai324234s/FFmpeg.git
         cd FFmpeg
-        git checkout 50140a97449b0652a00a52b054e57bb3f84363cb
+        git checkout e038a48d08b9c3768168eec11a741d1ddc69ee8a
         
     - name: Configure library
       working-directory: ${{github.workspace}}/FFmpeg
