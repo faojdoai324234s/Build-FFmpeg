@@ -33,8 +33,9 @@ jobs:
         mv /usr/bin/link.exe /usr/bin/link.exe.bak
 
     - name: Check link.exe
-      shell: msys2 {0}
-      run: >-
+      shell: cmd
+      run: |
+        C:\msys64\msys2_shell.cmd
         which link.exe
         
     - name: Clone FFmpeg
