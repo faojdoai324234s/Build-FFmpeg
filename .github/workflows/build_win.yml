@@ -22,7 +22,8 @@ jobs:
     - name: Setup MSYS2
       shell: cmd
       run: |
-        MSYS2_PATH_TYPE=inherit
+        set MSYS2_PATH_TYPE=inherit
+        dir C:/msys64
         C:/msys64/msys2_shell.cmd
         
     - name: Install dependencies
