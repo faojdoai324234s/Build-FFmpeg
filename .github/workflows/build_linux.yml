@@ -19,16 +19,10 @@ jobs:
       
     - name: Configure library
       run: |
-        git clone https://github.com/FFmpeg/FFmpeg.git
         mkdir upload
+        git clone https://github.com/FFmpeg/FFmpeg.git
         cd FFmpeg
-        echo "Running git branch..."
-        git branch
-        echo "Running git checkout..."
         git checkout release/7.1
-        echo "Running git status..."
-        git status
-        echo "Running configure..."
         ./configure \
         --arch=x86_64 \
         --target-os=linux \
