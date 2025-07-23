@@ -17,7 +17,7 @@ jobs:
     - name: Install dependencies
       run: sudo apt-get update && sudo apt-get -y install nasm
       
-    - name: Build library
+    - name: Configure library
       run: |
         git clone https://github.com/FFmpeg/FFmpeg.git
         mkdir upload
@@ -33,17 +33,11 @@ jobs:
         --disable-doc \
         --disable-decoder=libdav1d
         
-    - name: Make
+    - name: Build library
       run: cd FFmpeg && make
 
-    - name: Make install
+    - name: Install library
       run: cd FFmpeg && sudo make install
-
-    - name: List files
-      run: echo "Listing files..." && ls ${{github.workspace}}/upload
-    
-    - name: List files again
-      run: echo "List files again..." && ls ${{github.workspace}}/FFmpeg
       
     - name: Upload artifact
       uses: actions/upload-artifact@v4
