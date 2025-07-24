@@ -50,11 +50,28 @@ jobs:
         --toolchain=msvc \
         --prefix=$UPLOAD_FOLDER \
         --enable-gpl \
-        --disable-doc \
-        --disable-programs \
+        --enable-nonfree \
         --disable-static \
         --enable-shared \
-        --disable-decoder=libdav1d
+        --disable-all \
+        --disable-everything \
+        --disable-doc \
+        --enable-avcodec \
+        --enable-avformat \
+        --enable-swresample \
+        --enable-w32threads \
+        --enable-error-resilience \
+        --enable-decoder=h264,hevc,vvc,vp8,vp9,av1,aac,ac3,flac,mp3,opus,vorbis \
+        --enable-demuxer=h264,hevc,vvc,vp8,vp9,av1,aac,ac3,flac,mp3,opus,vorbis \
+        --enable-parser=h264,hevc,vvc,vp8,vp9,av1,aac,ac3,flac,mp3,opus,vorbis \
+        --disable-decoder=libdav1d \
+        --enable-libfdk-aac \
+        --enable-d3d11va \
+        --enable-d3d12va \
+        --enable-dxva2 \
+        --disable-iconv \
+        --disable-zlib \
+        --disable-debug
 
     - name: Build library
       working-directory: ${{github.workspace}}/FFmpeg
