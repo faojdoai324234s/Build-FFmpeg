@@ -37,11 +37,14 @@ jobs:
         --enable-avformat \
         --enable-swresample \
         --enable-pthreads \
-        --enable-w32threads \
         --enable-error-resilience \
-        --enable-decoder=libx264 \
-        --enable-decoder=libx265 \
-        --enable-decoder=libvvenc
+        --enable-decoder=h264 \
+        --enable-decoder=hevc \
+        --enable-decoder=vvc \
+        --enable-decoder=vp8 \
+        --enable-decoder=vp9 \
+        --enable-decoder=av1 \
+        --disable-decoder=libdav1d
         
     - name: Build library
       run: cd FFmpeg && make
