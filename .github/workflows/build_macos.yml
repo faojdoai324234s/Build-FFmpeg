@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Install dependencies
-      run: brew install automake fdk-aac lame libass libvorbis libvpx opus sdl shtool texi2html theora x264 x265 xvid nasm
+      run: brew install automake fdk-aac libvorbis opus x264 x265 nasm
       
     - name: Configure library
       run: |
