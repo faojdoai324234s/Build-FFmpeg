@@ -49,11 +49,13 @@ jobs:
         --disable-appkit \
         --disable-bzlib \
         --disable-coreimage \
+        --disable-iconv \
         --disable-libxcb \
         --disable-libxcb_shape \
         --disable-libxcb_shm \
         --disable-libxcb_xfixes \
         --disable-lzma \
+        --disable-zlib \
         --disable-debug
         
     - name: Build library
