@@ -45,7 +45,7 @@ jobs:
         --disable-decoder=libdav1d \
         --enable-libfdk-aac \
         --enable-vaapi \
-        --enable-protocol=file
+        --disable-debug
         
     - name: Build library
       run: cd FFmpeg && make
