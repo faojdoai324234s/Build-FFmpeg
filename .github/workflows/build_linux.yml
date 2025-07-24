@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Install dependencies
-      run: sudo apt-get update && sudo apt-get -y install nasm
+      run: sudo apt-get update && sudo apt-get -y install nasm libfdk-aac-dev
       
     - name: Configure library
       run: |
