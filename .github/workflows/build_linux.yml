@@ -30,9 +30,18 @@ jobs:
         --enable-gpl \
         --disable-static \
         --enable-shared \
-        --disable-programs \
+        --disable-all \
+        --disable-everything \
         --disable-doc \
-        --disable-decoder=libdav1d
+        --enable-avcodec \
+        --enable-avformat \
+        --enable-swresample \
+        --enable-pthreads \
+        --enable-w32threads \
+        --enable-error-resilience \
+        --enable-decoder=libx264 \
+        --enable-decoder=libx265 \
+        --enable-decoder=libvvenc
         
     - name: Build library
       run: cd FFmpeg && make
