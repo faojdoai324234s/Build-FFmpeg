@@ -28,6 +28,7 @@ jobs:
         --target-os=linux \
         --prefix=${{github.workspace}}/upload \
         --enable-gpl \
+        --enable-nonfree \
         --disable-static \
         --enable-shared \
         --disable-all \
@@ -44,7 +45,14 @@ jobs:
         --enable-decoder=vp8 \
         --enable-decoder=vp9 \
         --enable-decoder=av1 \
-        --disable-decoder=libdav1d
+        --disable-decoder=libdav1d \
+        --enable-decoder=aac \
+        --enable-decoder=ac3 \
+        --enable-decoder=flac \
+        --enable-decoder=mp3 \
+        --enable-decoder=opus \
+        --enable-decoder=vorbis \
+        --enable-libfdk-aac
         
     - name: Build library
       run: cd FFmpeg && make
