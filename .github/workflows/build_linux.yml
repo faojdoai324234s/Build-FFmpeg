@@ -44,6 +44,7 @@ jobs:
         --enable-parser=h264,hevc,vvc,vp8,vp9,av1,aac,ac3,flac,mp3,opus,vorbis \
         --disable-decoder=libdav1d \
         --enable-libfdk-aac \
+        --enable-ffnvcodec \
         --enable-nvdec \
         --enable-vaapi \
         --enable-vdpau \
