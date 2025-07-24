@@ -39,19 +39,10 @@ jobs:
         --enable-swresample \
         --enable-pthreads \
         --enable-error-resilience \
-        --enable-decoder=h264 \
-        --enable-decoder=hevc \
-        --enable-decoder=vvc \
-        --enable-decoder=vp8 \
-        --enable-decoder=vp9 \
-        --enable-decoder=av1 \
+        --enable-decoder=h264,hevc,vvc,vp8,vp9,av1,aac,ac3,flac,mp3,opus,vorbis \
+        --enable-demuxer=h264,hevc,vvc,vp8,vp9,av1,aac,ac3,flac,mp3,opus,vorbis \
+        --enable-parser=h264,hevc,vvc,vp8,vp9,av1,aac,ac3,flac,mp3,opus,vorbis \
         --disable-decoder=libdav1d \
-        --enable-decoder=aac \
-        --enable-decoder=ac3 \
-        --enable-decoder=flac \
-        --enable-decoder=mp3 \
-        --enable-decoder=opus \
-        --enable-decoder=vorbis \
         --enable-libfdk-aac
         
     - name: Build library
