@@ -55,6 +55,7 @@ jobs:
         --disable-libxcb_shm \
         --disable-libxcb_xfixes \
         --disable-lzma \
+        --disable-securetransport \
         --disable-zlib \
         --disable-debug
         
