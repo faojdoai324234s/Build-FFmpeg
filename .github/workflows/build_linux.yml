@@ -45,6 +45,8 @@ jobs:
         --disable-decoder=libdav1d \
         --enable-libfdk-aac \
         --enable-vaapi \
+        --disable-iconv \
+        --disable-zlib \
         --disable-debug
         
     - name: Build library
