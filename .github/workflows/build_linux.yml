@@ -44,7 +44,7 @@ jobs:
         --enable-parser=h264,hevc,vvc,vp8,vp9,av1,aac,ac3,flac,mp3,opus,vorbis \
         --disable-decoder=libdav1d \
         --enable-libfdk-aac \
-        --enable-hwaccel=cuda,vaapi,vdpau \
+        --enable-hwaccel=cuda,nvdec,vaapi,vdpau \
         --enable-protocol=file
         
     - name: Build library
