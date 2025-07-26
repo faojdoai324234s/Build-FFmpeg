@@ -39,9 +39,9 @@ jobs:
         --enable-swresample \
         --enable-pthreads \
         --enable-error-resilience \
-        --enable-decoder=h264,hevc,vvc,vp8,vp9,av1,aac,ac3,flac,mp3,opus,vorbis \
-        --enable-demuxer=h264,hevc,vvc,vp8,vp9,av1,aac,ac3,flac,mp3,opus,vorbis \
-        --enable-parser=h264,hevc,vvc,vp8,vp9,av1,aac,ac3,flac,mp3,opus,vorbis \
+        --enable-decoder=h264,hevc,mpeg2video,vc1,vvc,vp8,vp9,av1,aac,ac3,dca,eac3,flac,mp3,opus,truehd,vorbis \
+        --enable-demuxer=h264,hevc,mpeg2video,vc1,vvc,vp8,vp9,av1,aac,ac3,dca,eac3,flac,mp3,opus,truehd,vorbis \
+        --enable-parser=h264,hevc,mpeg2video,vc1,vvc,vp8,vp9,av1,aac,ac3,dca,eac3,flac,mp3,opus,truehd,vorbis \
         --disable-decoder=libdav1d \
         --enable-libfdk-aac \
         --enable-audiotoolbox \
