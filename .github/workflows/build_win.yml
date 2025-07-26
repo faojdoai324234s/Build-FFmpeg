@@ -68,6 +68,7 @@ jobs:
         --enable-d3d12va \
         --enable-dxva2 \
         --disable-iconv \
+        --disable-schannel \
         --disable-zlib \
         --disable-debug
 
