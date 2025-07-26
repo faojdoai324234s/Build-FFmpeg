@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Install dependencies
-      run: brew install automake fdk-aac lame libass libvorbis libvpx opus sdl shtool texi2html theora x264 x265 xvid nasm
+      run: brew install fdk-aac libvorbis opus x264 x265 nasm
       
     - name: Configure library
       run: |
@@ -28,11 +28,36 @@ jobs:
         --target-os=darwin \
         --prefix=${{github.workspace}}/upload \
         --enable-gpl \
+        --enable-nonfree \
         --disable-static \
         --enable-shared \
-        --disable-programs \
+        --disable-all \
+        --disable-everything \
         --disable-doc \
-        --disable-decoder=libdav1d
+        --enable-avcodec \
+        --enable-avformat \
+        --enable-swresample \
+        --enable-pthreads \
+        --enable-error-resilience \
+        --enable-decoder=h264,hevc,mpeg2video,vc1,vvc,vp8,vp9,av1,aac,ac3,dca,eac3,flac,mp3,opus,truehd,vorbis \
+        --enable-demuxer=h264,hevc,mpeg2video,vc1,vvc,vp8,vp9,av1,aac,ac3,dca,eac3,flac,mp3,opus,truehd,vorbis \
+        --enable-parser=h264,hevc,mpeg2video,vc1,vvc,vp8,vp9,av1,aac,ac3,dca,eac3,flac,mp3,opus,truehd,vorbis \
+        --disable-decoder=libdav1d \
+        --enable-libfdk-aac \
+        --enable-audiotoolbox \
+        --enable-videotoolbox \
+        --disable-appkit \
+        --disable-bzlib \
+        --disable-coreimage \
+        --disable-iconv \
+        --disable-libxcb \
+        --disable-libxcb_shape \
+        --disable-libxcb_shm \
+        --disable-libxcb_xfixes \
+        --disable-lzma \
+        --disable-securetransport \
+        --disable-zlib \
+        --disable-debug
         
     - name: Build library
       run: cd FFmpeg && make
