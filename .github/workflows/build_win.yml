@@ -34,6 +34,11 @@ jobs:
         git clone https://github.com/faojdoai324234s/FFmpeg.git
         cd FFmpeg
         git checkout e038a48d08b9c3768168eec11a741d1ddc69ee8a
+
+    - name: Dir
+      shell: cmd
+      run: |
+        dir "d:/a/Build-FFmpeg/Build-FFmpeg"
         
     - name: Configure library
       working-directory: ${{github.workspace}}/FFmpeg
@@ -48,8 +53,9 @@ jobs:
         --toolchain=msvc \
         --prefix=$UPLOAD_FOLDER \
         --enable-gpl \
-        --disable-static \
-        --enable-shared \
+        --enable-nonfree \
+        --enable-static \
+        --disable-shared \
         --disable-all \
         --disable-everything \
         --disable-doc \
@@ -62,6 +68,10 @@ jobs:
         --enable-demuxer=h264,hevc,mpeg2video,vc1,vvc,vp8,vp9,av1,aac,ac3,dca,eac3,flac,mp3,opus,truehd,vorbis \
         --enable-parser=h264,hevc,mpeg2video,vc1,vvc,vp8,vp9,av1,aac,ac3,dca,eac3,flac,mp3,opus,truehd,vorbis \
         --disable-decoder=libdav1d \
+        --enable-libfdk-aac \
+        --extra-cflags="-I/d/a/Build-FFmpeg/Build-FFmpeg/include -MT" \
+        --extra-cxxflags="-I/d/a/Build-FFmpeg/Build-FFmpeg/include -MT" \
+        --extra-ldflags="-L/d/a/Build-FFmpeg/Build-FFmpeg/lib -fdk-aac -fdk-aac_debug" \
         --enable-d3d11va \
         --enable-d3d12va \
         --enable-dxva2 \
