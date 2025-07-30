@@ -69,7 +69,12 @@ jobs:
         git clone https://github.com/faojdoai324234s/FFmpeg.git
         cd FFmpeg
         git checkout e038a48d08b9c3768168eec11a741d1ddc69ee8a
-        
+
+    - name: Check link
+      working-directory: ${{github.workspace}}/FFmpeg
+      shell: msys2 {0}
+      run: which link
+      
     - name: Configure library
       working-directory: ${{github.workspace}}/FFmpeg
       shell: msys2 {0}
