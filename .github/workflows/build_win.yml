@@ -74,7 +74,6 @@ jobs:
       working-directory: ${{github.workspace}}/FFmpeg
       shell: msys2 {0}
       run: |
-        CC=cl
         ./configure \
         --arch=x86_64 \
         --target-os=win64 \
