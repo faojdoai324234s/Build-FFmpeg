@@ -74,6 +74,11 @@ jobs:
       working-directory: ${{github.workspace}}/FFmpeg
       shell: msys2 {0}
       run: which link
+
+    - name: Check cl
+      working-directory: ${{github.workspace}}/FFmpeg
+      shell: msys2 {0}
+      run: which cl
       
     - name: Configure library
       working-directory: ${{github.workspace}}/FFmpeg
