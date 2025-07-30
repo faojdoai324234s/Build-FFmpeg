@@ -76,7 +76,6 @@ jobs:
       run: |
         CC=cl
         ./configure \
-        --enable-cross-compile \
         --arch=x86_64 \
         --target-os=win64 \
         --toolchain=msvc \
@@ -99,7 +98,7 @@ jobs:
         --disable-decoder=libdav1d \
         --enable-libfdk-aac \
         --extra-cflags="-I /c/fdk-aac/include" \
-        --extra-ldflags="-L /c/fdk-aac/lib" \
+        --extra-ldflags="-L /c/fdk-aac/lib -libfdk-aac.a" \
         --enable-d3d11va \
         --enable-d3d12va \
         --enable-dxva2 \
