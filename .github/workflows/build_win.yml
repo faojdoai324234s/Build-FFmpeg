@@ -75,6 +75,7 @@ jobs:
       shell: msys2 {0}
       run: |
         ./configure \
+        --enable-cross-compile \
         --arch=x86_64 \
         --target-os=win64 \
         --toolchain=msvc \
