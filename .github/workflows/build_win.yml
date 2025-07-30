@@ -100,7 +100,7 @@ jobs:
         --disable-decoder=libdav1d \
         --enable-libfdk-aac \
         --extra-cflags="-IC:\fdk-aac\include" \
-        --extra-ldflags="-LC:\fdk-aac\lib" \
+        --extra-ldflags="-LC:\fdk-aac\lib -libfdk-aac" \
         --enable-d3d11va \
         --enable-d3d12va \
         --enable-dxva2 \
