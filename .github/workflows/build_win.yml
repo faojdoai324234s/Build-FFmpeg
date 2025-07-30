@@ -70,6 +70,7 @@ jobs:
         --disable-decoder=libdav1d \
         --enable-libfdk-aac \
         --extra-cflags="-I/d/a/Build-FFmpeg/Build-FFmpeg/include" \
+        --extra-cxxflags="-I/d/a/Build-FFmpeg/Build-FFmpeg/include" \
         --extra-ldflags="-L/d/a/Build-FFmpeg/Build-FFmpeg/lib -fdk-aac.lib -fdk-aac_debug.lib" \
         --enable-d3d11va \
         --enable-d3d12va \
