@@ -71,7 +71,7 @@ jobs:
         --enable-libfdk-aac \
         --extra-cflags="-I/d/a/Build-FFmpeg/Build-FFmpeg/include -MT" \
         --extra-cxxflags="-I/d/a/Build-FFmpeg/Build-FFmpeg/include -MT" \
-        --extra-ldflags="-L/d/a/Build-FFmpeg/Build-FFmpeg/lib -fdk-aac.lib -fdk-aac_debug.lib" \
+        --extra-ldflags="-L/d/a/Build-FFmpeg/Build-FFmpeg/lib -fdk-aac -fdk-aac_debug" \
         --enable-d3d11va \
         --enable-d3d12va \
         --enable-dxva2 \
