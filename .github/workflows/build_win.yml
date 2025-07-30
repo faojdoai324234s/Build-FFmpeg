@@ -18,6 +18,9 @@ jobs:
     - uses: msys2/setup-msys2@v2
       with:
         install: >-
+          autoconf
+          automake
+          libtool
           make
           yasm
         path-type: inherit
@@ -27,29 +30,34 @@ jobs:
       shell: msys2 {0}
       run: mv /usr/bin/link.exe /usr/bin/link.exe.bak
         
+    - name: Install FDK-AAC
+      shell: cmd
+      run: |
+        mkdir C:\fdk-aac
+        mkdir C:\upload
+        vcpkg install fdk-aac
+      
     - name: Clone FFmpeg
       shell: cmd
       run: |
-        mkdir upload
         git clone https://github.com/faojdoai324234s/FFmpeg.git
         cd FFmpeg
         git checkout e038a48d08b9c3768168eec11a741d1ddc69ee8a
-        
+      
     - name: Configure library
       working-directory: ${{github.workspace}}/FFmpeg
       shell: msys2 {0}
-      env:
-        UPLOAD_FOLDER: ${{github.workspace}}\upload
       run: |
         CC=cl
         ./configure \
         --arch=x86_64 \
         --target-os=win64 \
         --toolchain=msvc \
-        --prefix=$UPLOAD_FOLDER \
+        --prefix=/c/upload/ \
         --enable-gpl \
-        --disable-static \
-        --enable-shared \
+        --enable-nonfree \
+        --enable-static \
+        --disable-shared \
         --disable-all \
         --disable-everything \
         --disable-doc \
@@ -62,6 +70,7 @@ jobs:
         --enable-demuxer=h264,hevc,mpeg2video,vc1,vvc,vp8,vp9,av1,aac,ac3,dca,eac3,flac,mp3,opus,truehd,vorbis \
         --enable-parser=h264,hevc,mpeg2video,vc1,vvc,vp8,vp9,av1,aac,ac3,dca,eac3,flac,mp3,opus,truehd,vorbis \
         --disable-decoder=libdav1d \
+        --enable-libfdk-aac \
         --enable-d3d11va \
         --enable-d3d12va \
         --enable-dxva2 \
@@ -84,6 +93,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: Windows-artifact
-        path: ${{github.workspace}}/upload
+        path: C:/upload
         if-no-files-found: ignore
+        include-hidden-files: true
         retention-days: 0
