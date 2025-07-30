@@ -84,6 +84,7 @@ jobs:
         --toolchain=msvc \
         --prefix=$UPLOAD_FOLDER \
         --enable-gpl \
+        --enable-nonfree \
         --disable-static \
         --enable-shared \
         --disable-all \
