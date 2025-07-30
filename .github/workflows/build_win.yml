@@ -38,7 +38,7 @@ jobs:
     - name: Dir
       shell: cmd
       run: |
-        dir d:/a/Build-FFmpeg/Build-FFmpeg
+        dir "d:/a/Build-FFmpeg/Build-FFmpeg"
         
     - name: Configure library
       working-directory: ${{github.workspace}}/FFmpeg
