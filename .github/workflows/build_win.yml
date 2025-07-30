@@ -34,6 +34,11 @@ jobs:
         git clone https://github.com/faojdoai324234s/FFmpeg.git
         cd FFmpeg
         git checkout e038a48d08b9c3768168eec11a741d1ddc69ee8a
+
+    - name: Dir
+      shell: cmd
+      run: |
+        dir d:/a/Build-FFmpeg/Build-FFmpeg
         
     - name: Configure library
       working-directory: ${{github.workspace}}/FFmpeg
