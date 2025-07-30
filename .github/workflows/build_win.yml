@@ -18,6 +18,9 @@ jobs:
     - uses: msys2/setup-msys2@v2
       with:
         install: >-
+          autoconf
+          automake
+          libtool
           make
           yasm
         path-type: inherit
@@ -27,6 +30,38 @@ jobs:
       shell: msys2 {0}
       run: mv /usr/bin/link.exe /usr/bin/link.exe.bak
         
+    - name: Clone FDK-AAC
+      shell: cmd
+      run: |
+        mkdir C:\fdk-aac
+        git clone https://github.com/mstorsjo/fdk-aac.git
+        cd fdk-aac
+        git checkout 716f4394641d53f0d79c9ddac3fa93b03a49f278
+        
+    - name: Setup FDK-AAC
+      working-directory: ${{github.workspace}}/fdk-aac
+      shell: msys2 {0}
+      run: |
+        libtoolize
+        aclocal
+        autoconf
+        automake --add-missing
+
+    - name: Configure FDK-AAC
+      working-directory: ${{github.workspace}}/fdk-aac
+      shell: msys2 {0}
+      run: ./configure --prefix=/c/fdk-aac
+
+    - name: Build FDK-AAC
+      working-directory: ${{github.workspace}}/fdk-aac
+      shell: msys2 {0}
+      run: make
+
+    - name: Install FDK-AAC
+      working-directory: ${{github.workspace}}/fdk-aac
+      shell: msys2 {0}
+      run: make install
+      
     - name: Clone FFmpeg
       shell: cmd
       run: |
@@ -42,6 +77,7 @@ jobs:
         UPLOAD_FOLDER: ${{github.workspace}}\upload
       run: |
         CC=cl
+        CPPFLAGS="$CPPFLAGS -IC:\fdk-aac\include"
         ./configure \
         --arch=x86_64 \
         --target-os=win64 \
@@ -62,6 +98,8 @@ jobs:
         --enable-demuxer=h264,hevc,mpeg2video,vc1,vvc,vp8,vp9,av1,aac,ac3,dca,eac3,flac,mp3,opus,truehd,vorbis \
         --enable-parser=h264,hevc,mpeg2video,vc1,vvc,vp8,vp9,av1,aac,ac3,dca,eac3,flac,mp3,opus,truehd,vorbis \
         --disable-decoder=libdav1d \
+        --enable-libfdk-aac \
+        --extra-ldflags='-LC:\fdk-aac\lib'
         --enable-d3d11va \
         --enable-d3d12va \
         --enable-dxva2 \
@@ -86,4 +124,5 @@ jobs:
         name: Windows-artifact
         path: ${{github.workspace}}/upload
         if-no-files-found: ignore
+        include-hidden-files: true
         retention-days: 0
