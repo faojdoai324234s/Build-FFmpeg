@@ -18,7 +18,11 @@ jobs:
     - uses: msys2/setup-msys2@v2
       with:
         install: >-
+          autoconf
+          automake
+          libtool
           make
+          pkg-config
           yasm
         path-type: inherit
         update: true
@@ -26,6 +30,47 @@ jobs:
     - name: Setup MSYS2
       shell: msys2 {0}
       run: mv /usr/bin/link.exe /usr/bin/link.exe.bak
+
+    - name: Clone FDK-AAC
+      shell: cmd
+      run: |
+        mkdir C:\fdk-aac
+        git clone https://github.com/mstorsjo/fdk-aac.git
+        cd fdk-aac
+        git checkout 716f4394641d53f0d79c9ddac3fa93b03a49f278
+
+    - name: Setup FDK-AAC
+      working-directory: ${{github.workspace}}/fdk-aac
+      shell: msys2 {0}
+      run: |
+        libtoolize
+        aclocal
+        autoconf
+        automake --add-missing
+
+    - name: Configure FDK-AAC
+      working-directory: ${{github.workspace}}/fdk-aac
+      shell: msys2 {0}
+      run: ./configure --prefix=/c/fdk-aac
+
+    - name: Build FDK-AAC
+      working-directory: ${{github.workspace}}/fdk-aac
+      shell: msys2 {0}
+      run: make
+
+    - name: Install FDK-AAC
+      working-directory: ${{github.workspace}}/fdk-aac
+      shell: msys2 {0}
+      run: make install
+
+    - name: Upload FDK-AAC artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: FDK-AAC-artifact
+        path: C:\fdk-aac
+        if-no-files-found: ignore
+        include-hidden-files: true
+        retention-days: 0
         
     - name: Clone FFmpeg
       shell: cmd
@@ -48,6 +93,7 @@ jobs:
         --toolchain=msvc \
         --prefix=$UPLOAD_FOLDER \
         --enable-gpl \
+        --enable-nonfree \
         --disable-static \
         --enable-shared \
         --disable-all \
@@ -73,12 +119,12 @@ jobs:
     - name: Build library
       working-directory: ${{github.workspace}}/FFmpeg
       shell: msys2 {0}
-      run: make
+      run: makea
 
     - name: Install library
       working-directory: ${{github.workspace}}/FFmpeg
       shell: msys2 {0}
-      run: make install
+      run: make installa
       
     - name: Upload artifact
       uses: actions/upload-artifact@v4
