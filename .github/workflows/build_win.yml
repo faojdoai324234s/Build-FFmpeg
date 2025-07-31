@@ -23,6 +23,7 @@ jobs:
           diffutils
           libtool
           make
+          nasm
           pkg-config
           yasm
         path-type: inherit
