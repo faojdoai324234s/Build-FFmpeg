@@ -57,7 +57,7 @@ jobs:
     - name: Configure FDK-AAC
       working-directory: ${{github.workspace}}/fdk-aac
       shell: msys2 {0}
-      run: ./configure --prefix=/c/fdk-aac
+      run: ./configure --host=x86_64-w64-mingw32 --prefix=/c/fdk-aac --enable-static --disable-shared
 
     - name: Build FDK-AAC
       working-directory: ${{github.workspace}}/fdk-aac
