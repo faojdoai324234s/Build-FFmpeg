@@ -31,14 +31,10 @@ jobs:
       shell: msys2 {0}
       run: mv /usr/bin/link.exe /usr/bin/link.exe.bak
 
-    - name: Check script
-      shell: msys2 {0}
-      run: ./build_win.bat
-
     - name: Clone FDK-AAC
       shell: cmd
       run: |
-        amkdir C:\fdk-aac
+        mkdir C:\fdk-aac
         git clone https://github.com/mstorsjo/fdk-aac.git
         cd fdk-aac
         git checkout 716f4394641d53f0d79c9ddac3fa93b03a49f278
@@ -74,7 +70,20 @@ jobs:
         git clone https://github.com/faojdoai324234s/FFmpeg.git
         cd FFmpeg
         git checkout e038a48d08b9c3768168eec11a741d1ddc69ee8a
-        
+
+    - name: Run configure script
+      shell: msys2 {0}
+      run: ./build_win.bat
+
+    - name: Upload log
+      uses: actions/upload-artifact@v4
+      with:
+        name: ffbuild-log
+        path: ${{github.workspace}}/FFmpeg/ffbuild
+        if-no-files-found: ignore
+        include-hidden-files: true
+        retention-days: 0
+      
     - name: Configure library
       working-directory: ${{github.workspace}}/FFmpeg
       shell: msys2 {0}
@@ -83,7 +92,7 @@ jobs:
       run: |
         PKG_CONFIG_PATH="/c/fdk-aac/lib/pkgconfig"
         CC=cl
-        ./configure \
+        ./configurea \
         --arch=x86_64 \
         --target-os=win64 \
         --toolchain=msvc \
