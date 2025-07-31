@@ -75,11 +75,8 @@ jobs:
       working-directory: ${{github.workspace}}/FFmpeg
       shell: msys2 {0}
       env:
-        SOURCE_FOLDER: ${{github.workspace}}\fdk-aac
         UPLOAD_FOLDER: ${{github.workspace}}\upload
       run: |
-        CC=cl
-        PATH="$SOURCE_FOLDER:$PATH"
         PKG_CONFIG_PATH="/c/fdk-aac/lib/pkgconfig"
         ./configure \
         --arch=x86_64 \
