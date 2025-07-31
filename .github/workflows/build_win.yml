@@ -33,7 +33,7 @@ jobs:
 
     - name: Check script
       shell: msys2 {0}
-      run: build_win.bat
+      run: ./build_win.bat
 
     - name: Clone FDK-AAC
       shell: cmd
