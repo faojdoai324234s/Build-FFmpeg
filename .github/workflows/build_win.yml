@@ -25,16 +25,21 @@ jobs:
           pkg-config
           yasm
         path-type: inherit
-        update: true
+        update: false
 
     - name: Setup MSYS2
       shell: msys2 {0}
       run: mv /usr/bin/link.exe /usr/bin/link.exe.bak
 
+    - name: Run configure script
+      shell: cmd
+      run: |
+        build_win.bat
+        
     - name: Clone FDK-AAC
       shell: cmd
       run: |
-        mkdir C:\fdk-aac
+        amkdir C:\fdk-aac
         git clone https://github.com/mstorsjo/fdk-aac.git
         cd fdk-aac
         git checkout 716f4394641d53f0d79c9ddac3fa93b03a49f278
@@ -72,8 +77,9 @@ jobs:
         git checkout e038a48d08b9c3768168eec11a741d1ddc69ee8a
 
     - name: Run configure script
-      shell: msys2 {0}
-      run: ./build_win.bat
+      shell: cmd
+      run: |
+        build_win.bat
 
     - name: Upload log
       uses: actions/upload-artifact@v4
