@@ -45,8 +45,10 @@ jobs:
         git checkout e038a48d08b9c3768168eec11a741d1ddc69ee8a
         cd ..
         xcopy /y /v /s /e fdk-aac FFmpeg\libraries\fdk-aac
-        echo "Check dir..."
+        echo "Check FFmpeg dir..."
         cd FFmpeg
+        dir
+        echo "Check FDK-AAC dir..."
         dir /s libraries\fdk-aac
         
     - name: Configure library
