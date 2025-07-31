@@ -1,35 +1,35 @@
 cd FFmpeg
 PKG_CONFIG_PATH="/c/fdk-aac/lib/pkgconfig"
 CC=cl
-./configure \
---arch=x86_64 \
---target-os=win64 \
---toolchain=msvc \
---prefix=$UPLOAD_FOLDER \
---enable-gpl \
---enable-nonfree \
---enable-static \
---disable-shared \
---disable-all \
---disable-everything \
---disable-doc \
---enable-avcodec \
---enable-avformat \
---enable-swresample \
---enable-w32threads \
---enable-error-resilience \
---enable-decoder=h264,hevc,mpeg2video,vc1,vvc,vp8,vp9,av1,aac,ac3,dca,eac3,flac,mp3,opus,truehd,vorbis \
---enable-demuxer=h264,hevc,mpeg2video,vc1,vvc,vp8,vp9,av1,aac,ac3,dca,eac3,flac,mp3,opus,truehd,vorbis \
---enable-parser=h264,hevc,mpeg2video,vc1,vvc,vp8,vp9,av1,aac,ac3,dca,eac3,flac,mp3,opus,truehd,vorbis \
---disable-decoder=libdav1d \
---enable-libfdk-aac \
---extra-cflags="-I /c/fdk-aac/include/" \
---extra-ldflags="-L /c/fdk-aac/lib/ -libfdk-aac" \
---pkg-config-flags="--static" \
---enable-d3d11va \
---enable-d3d12va \
---enable-dxva2 \
---disable-iconv \
---disable-schannel \
---disable-zlib \
+./configure ^
+--arch=x86_64 ^
+--target-os=win64 ^
+--toolchain=msvc ^
+--prefix=$UPLOAD_FOLDER ^
+--enable-gpl ^
+--enable-nonfree ^
+--enable-static ^
+--disable-shared ^
+--disable-all ^
+--disable-everything ^
+--disable-doc ^
+--enable-avcodec ^
+--enable-avformat ^
+--enable-swresample ^
+--enable-w32threads ^
+--enable-error-resilience ^
+--enable-decoder=h264,hevc,mpeg2video,vc1,vvc,vp8,vp9,av1,aac,ac3,dca,eac3,flac,mp3,opus,truehd,vorbis ^
+--enable-demuxer=h264,hevc,mpeg2video,vc1,vvc,vp8,vp9,av1,aac,ac3,dca,eac3,flac,mp3,opus,truehd,vorbis ^
+--enable-parser=h264,hevc,mpeg2video,vc1,vvc,vp8,vp9,av1,aac,ac3,dca,eac3,flac,mp3,opus,truehd,vorbis ^
+--disable-decoder=libdav1d ^
+--enable-libfdk-aac ^
+--extra-cflags="-I /c/fdk-aac/include/" ^
+--extra-ldflags="-L /c/fdk-aac/lib/ -libfdk-aac" ^
+--pkg-config-flags="--static" ^
+--enable-d3d11va ^
+--enable-d3d12va ^
+--enable-dxva2 ^
+--disable-iconv ^
+--disable-schannel ^
+--disable-zlib ^
 --disable-debug
