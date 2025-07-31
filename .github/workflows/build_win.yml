@@ -35,9 +35,14 @@ jobs:
     - name: Setup MSYS2
       shell: msys2 {0}
       run: mv /usr/bin/link.exe /usr/bin/link.exe.bak
+      
+      
+    - name: Check C-version
+      shell: msys2 {0}
+      run: gcc -dM -E - < /dev/null | grep "__STDC_"
         
     - name: Clone FDK-AAC
-      shell: cmd
+      shell: cmda
       run: |
         mkdir C:\fdk-aac
         git clone https://github.com/mstorsjo/fdk-aac.git
