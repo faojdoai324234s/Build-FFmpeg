@@ -26,6 +26,13 @@ jobs:
     - name: Setup MSYS2
       shell: msys2 {0}
       run: mv /usr/bin/link.exe /usr/bin/link.exe.bak
+
+    - name: Clone FDK-AAC
+      shell: cmd
+      run: |
+        git clone https://github.com/mstorsjo/fdk-aac.git
+        cd fdk-aac
+        git checkout 716f4394641d53f0d79c9ddac3fa93b03a49f278
         
     - name: Clone FFmpeg
       shell: cmd
@@ -33,7 +40,23 @@ jobs:
         mkdir upload
         git clone https://github.com/faojdoai324234s/FFmpeg.git
         cd FFmpeg
+        mkdir libraries
+        mkdir libraries\libfdk_aac
+        mkdir libraries\libfdk-aac
+        mkdir libs
+        mkdir libs\libfdk_aac
+        mkdir libs\libfdk-aac
         git checkout e038a48d08b9c3768168eec11a741d1ddc69ee8a
+        cd ..
+        xcopy /y /v /s /e fdk-aac FFmpeg\libraries\libfdk_aac
+        xcopy /y /v /s /e fdk-aac FFmpeg\libraries\libfdk-aac
+        xcopy /y /v /s /e fdk-aac FFmpeg\libs\libfdk_aac
+        xcopy /y /v /s /e fdk-aac FFmpeg\libs\libfdk-aac
+        echo "Check FFmpeg dir..."
+        cd FFmpeg
+        dir
+        echo "Check FDK-AAC dir..."
+        dir /s libraries\libfdk_aac
         
     - name: Configure library
       working-directory: ${{github.workspace}}/FFmpeg
@@ -48,6 +71,7 @@ jobs:
         --toolchain=msvc \
         --prefix=$UPLOAD_FOLDER \
         --enable-gpl \
+        --enable-nonfree \
         --disable-static \
         --enable-shared \
         --disable-all \
@@ -62,6 +86,7 @@ jobs:
         --enable-demuxer=h264,hevc,mpeg2video,vc1,vvc,vp8,vp9,av1,aac,ac3,dca,eac3,flac,mp3,opus,truehd,vorbis \
         --enable-parser=h264,hevc,mpeg2video,vc1,vvc,vp8,vp9,av1,aac,ac3,dca,eac3,flac,mp3,opus,truehd,vorbis \
         --disable-decoder=libdav1d \
+        --enable-libfdk-aac \
         --enable-d3d11va \
         --enable-d3d12va \
         --enable-dxva2 \
