@@ -78,6 +78,7 @@ jobs:
         UPLOAD_FOLDER: ${{github.workspace}}\upload
       run: |
         PKG_CONFIG_PATH="/c/fdk-aac/lib/pkgconfig"
+        CC=cl
         ./configure \
         --arch=x86_64 \
         --target-os=mingw64 \
