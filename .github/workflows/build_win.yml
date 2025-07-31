@@ -34,7 +34,7 @@ jobs:
     - name: Run configure script
       shell: cmd
       run: |
-        msys2 -c build_win.bat
+        msys2 -c ./build_win.bat
         
     - name: Clone FDK-AAC
       shell: cmda
