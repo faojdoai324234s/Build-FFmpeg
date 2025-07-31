@@ -66,7 +66,7 @@ jobs:
     - name: Clone FFmpeg
       shell: cmd
       run: |
-        mkdir upload
+        mkdir c:\upload
         git clone https://github.com/faojdoai324234s/FFmpeg.git
         cd FFmpeg
         git checkout e038a48d08b9c3768168eec11a741d1ddc69ee8a
