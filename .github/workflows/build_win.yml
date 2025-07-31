@@ -26,6 +26,7 @@ jobs:
           mingw-w64-x86_64-binutils
           mingw-w64-x86_64-gcc
           mingw-w64-x86_64-tools
+          mingw-w64-x86_64-toolchain
           nasm
           pkg-config
           yasm
