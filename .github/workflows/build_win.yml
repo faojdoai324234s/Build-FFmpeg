@@ -42,9 +42,16 @@ jobs:
         cd FFmpeg
         mkdir libraries
         mkdir libraries\libfdk_aac
+        mkdir libraries\libfdk-aac
+        mkdir libs
+        mkdir libs\libfdk_aac
+        mkdir libs\libfdk-aac
         git checkout e038a48d08b9c3768168eec11a741d1ddc69ee8a
         cd ..
         xcopy /y /v /s /e fdk-aac FFmpeg\libraries\libfdk_aac
+        xcopy /y /v /s /e fdk-aac FFmpeg\libraries\libfdk-aac
+        xcopy /y /v /s /e fdk-aac FFmpeg\libs\libfdk_aac
+        xcopy /y /v /s /e fdk-aac FFmpeg\libs\libfdk-aac
         echo "Check FFmpeg dir..."
         cd FFmpeg
         dir
