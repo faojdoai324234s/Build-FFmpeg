@@ -19,6 +19,7 @@ jobs:
       with:
         install: >-
           make
+          mingw64-x86_64-fdk-aac
           yasm
         path-type: inherit
         update: true
@@ -48,8 +49,9 @@ jobs:
         --toolchain=msvc \
         --prefix=$UPLOAD_FOLDER \
         --enable-gpl \
-        --disable-static \
-        --enable-shared \
+        --enable-nonfree \
+        --enable-static \
+        --disable-shared \
         --disable-all \
         --disable-everything \
         --disable-doc \
@@ -62,6 +64,7 @@ jobs:
         --enable-demuxer=h264,hevc,mpeg2video,vc1,vvc,vp8,vp9,av1,aac,ac3,dca,eac3,flac,mp3,opus,truehd,vorbis \
         --enable-parser=h264,hevc,mpeg2video,vc1,vvc,vp8,vp9,av1,aac,ac3,dca,eac3,flac,mp3,opus,truehd,vorbis \
         --disable-decoder=libdav1d \
+        --enable-libfdk-aac \
         --enable-d3d11va \
         --enable-d3d12va \
         --enable-dxva2 \
@@ -86,4 +89,14 @@ jobs:
         name: Windows-artifact
         path: ${{github.workspace}}/upload
         if-no-files-found: ignore
+        include-hidden-files: true
+        retention-days: 0
+
+    - name: Upload build log
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-log-win
+        path: ${{github.workspace}}/FFmpeg/ffbuild
+        if-no-files-found: ignore
+        include-hidden-files: true
         retention-days: 0
