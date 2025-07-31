@@ -31,6 +31,10 @@ jobs:
       shell: msys2 {0}
       run: mv /usr/bin/link.exe /usr/bin/link.exe.bak
 
+    - name: Check script
+      shell: msys2 {0}
+      run: build_win.bat
+
     - name: Clone FDK-AAC
       shell: cmd
       run: |
