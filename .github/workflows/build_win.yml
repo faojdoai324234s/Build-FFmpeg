@@ -81,7 +81,7 @@ jobs:
         CC=cl
         ./configure \
         --arch=x86_64 \
-        --target-os=mingw64 \
+        --target-os=win64 \
         --toolchain=msvc \
         --prefix=$UPLOAD_FOLDER \
         --enable-gpl \
