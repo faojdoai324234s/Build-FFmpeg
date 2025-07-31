@@ -41,12 +41,13 @@ jobs:
         git clone https://github.com/faojdoai324234s/FFmpeg.git
         cd FFmpeg
         mkdir libraries
+        mkdir libraries\fdk-aac
         git checkout e038a48d08b9c3768168eec11a741d1ddc69ee8a
         cd ..
-        xcopy /y /v /s /e fdk-aac FFmpeg\libraries
+        xcopy /y /v /s /e fdk-aac FFmpeg\libraries\fdk-aac
         echo "Check dir..."
         cd FFmpeg
-        dir /s libraries
+        dir /s libraries\fdk-aac
         
     - name: Configure library
       working-directory: ${{github.workspace}}/FFmpeg
