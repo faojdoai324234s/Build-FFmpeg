@@ -86,8 +86,8 @@ jobs:
         --prefix=$UPLOAD_FOLDER \
         --enable-gpl \
         --enable-nonfree \
-        --disable-static \
-        --enable-shared \
+        --enable-static \
+        --disable-shared \
         --disable-all \
         --disable-everything \
         --disable-doc \
@@ -103,6 +103,7 @@ jobs:
         --enable-libfdk-aac \
         --extra-cflags="-I /c/fdk-aac/include/" \
         --extra-ldflags="-L /c/fdk-aac/lib/ -libfdk-aac" \
+        --pkg-config-flags="--static" \
         --enable-d3d11va \
         --enable-d3d12va \
         --enable-dxva2 \
