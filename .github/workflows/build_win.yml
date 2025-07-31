@@ -26,10 +26,14 @@ jobs:
           mingw-w64-x86_64-binutils
           mingw-w64-x86_64-gcc
           mingw-w64-x86_64-tools
+          mingw64-x86_64-gcc-core
+          mingw64-x86_64-gcc-g++
+          mingw64-x86_64-headers
+          mingw64-x86_64-runtime
           nasm
           pkg-config
           yasm
-        msystem: UCRT64
+        msystem: MINGW64
         path-type: inherit
         update: true
 
