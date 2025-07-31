@@ -25,19 +25,14 @@ jobs:
           pkg-config
           yasm
         path-type: inherit
-        update: false
+        update: true
 
     - name: Setup MSYS2
       shell: msys2 {0}
       run: mv /usr/bin/link.exe /usr/bin/link.exe.bak
-
-    - name: Run configure script
-      shell: cmd
-      run: |
-        build_win.bat
         
     - name: Clone FDK-AAC
-      shell: cmda
+      shell: cmd
       run: |
         mkdir C:\fdk-aac
         git clone https://github.com/mstorsjo/fdk-aac.git
@@ -98,7 +93,7 @@ jobs:
       run: |
         PKG_CONFIG_PATH="/c/fdk-aac/lib/pkgconfig"
         CC=cl
-        ./configurea \
+        ./configure \
         --arch=x86_64 \
         --target-os=win64 \
         --toolchain=msvc \
