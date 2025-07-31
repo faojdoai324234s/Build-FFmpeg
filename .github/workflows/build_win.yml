@@ -30,9 +30,14 @@ jobs:
     - name: Setup MSYS2
       shell: msys2 {0}
       run: mv /usr/bin/link.exe /usr/bin/link.exe.bak
+
+    - name: Run configure script
+      shell: cmd
+      run: |
+        msys2 -c build_win.bat
         
     - name: Clone FDK-AAC
-      shell: cmd
+      shell: cmda
       run: |
         mkdir C:\fdk-aac
         git clone https://github.com/mstorsjo/fdk-aac.git
@@ -74,7 +79,7 @@ jobs:
     - name: Run configure script
       shell: cmd
       run: |
-        build_win.bat
+        msys2 -c build_win.bat
 
     - name: Upload log
       uses: actions/upload-artifact@v4
