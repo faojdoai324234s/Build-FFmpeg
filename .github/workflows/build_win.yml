@@ -20,6 +20,7 @@ jobs:
         install: >-
           autoconf
           automake
+          diffutils
           libtool
           make
           pkg-config
