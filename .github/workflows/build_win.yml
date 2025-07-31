@@ -37,9 +37,9 @@ jobs:
         build_win.bat
         
     - name: Clone FDK-AAC
-      shell: cmd
+      shell: cmda
       run: |
-        amkdir C:\fdk-aac
+        mkdir C:\fdk-aac
         git clone https://github.com/mstorsjo/fdk-aac.git
         cd fdk-aac
         git checkout 716f4394641d53f0d79c9ddac3fa93b03a49f278
