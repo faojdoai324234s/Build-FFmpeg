@@ -19,6 +19,7 @@ jobs:
     - name: Build project
       shell: cmd
       run: |
+        rename lib\*.a lib\*.lib
         cmake -B build -D CMAKE_BUILD_TYPE=Release
         cmake --build build --config Release
         
