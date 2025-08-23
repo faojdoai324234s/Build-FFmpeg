@@ -48,8 +48,8 @@ jobs:
         --toolchain=msvc \
         --prefix=$UPLOAD_FOLDER \
         --enable-gpl \
-        --disable-static \
-        --enable-shared \
+        --enable-static \
+        --disable-shared \
         --disable-all \
         --disable-everything \
         --disable-doc \
