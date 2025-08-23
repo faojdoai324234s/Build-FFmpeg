@@ -1,0 +1,14 @@
+prefix=D:aBuild-FFmpegBuild-FFmpegupload
+exec_prefix=${prefix}
+libdir=D:aBuild-FFmpegBuild-FFmpegupload/lib
+includedir=D:aBuild-FFmpegBuild-FFmpegupload/include
+
+Name: libavformat
+Description: FFmpeg container format library
+Version: 61.7.100
+Requires: libavcodec >= 61.19.101, libswresample >= 5.3.100, libavutil >= 59.39.100
+Requires.private: 
+Conflicts:
+Libs: -L${libdir}  -lavformat ws2_32.lib
+Libs.private: 
+Cflags: -I${includedir}

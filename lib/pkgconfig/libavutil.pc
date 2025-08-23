@@ -1,0 +1,14 @@
+prefix=D:aBuild-FFmpegBuild-FFmpegupload
+exec_prefix=${prefix}
+libdir=D:aBuild-FFmpegBuild-FFmpegupload/lib
+includedir=D:aBuild-FFmpegBuild-FFmpegupload/include
+
+Name: libavutil
+Description: FFmpeg utility library
+Version: 59.39.100
+Requires: 
+Requires.private: 
+Conflicts:
+Libs: -L${libdir}  -lavutil user32.lib bcrypt.lib
+Libs.private: 
+Cflags: -I${includedir}

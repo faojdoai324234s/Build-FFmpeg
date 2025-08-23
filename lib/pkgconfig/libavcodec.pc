@@ -1,0 +1,14 @@
+prefix=D:aBuild-FFmpegBuild-FFmpegupload
+exec_prefix=${prefix}
+libdir=D:aBuild-FFmpegBuild-FFmpegupload/lib
+includedir=D:aBuild-FFmpegBuild-FFmpegupload/include
+
+Name: libavcodec
+Description: FFmpeg codec library
+Version: 61.19.101
+Requires: libswresample >= 5.3.100, libavutil >= 59.39.100
+Requires.private: 
+Conflicts:
+Libs: -L${libdir}  -lavcodec ole32.lib user32.lib
+Libs.private: 
+Cflags: -I${includedir}
