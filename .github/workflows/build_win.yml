@@ -20,6 +20,7 @@ jobs:
         install: >-
           make
           yasm
+        msystem: UCRT64
         path-type: inherit
         update: true
 
