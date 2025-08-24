@@ -45,7 +45,7 @@ jobs:
         --arch=x86_64 \
         --target-os=win64 \
         --toolchain=msvc \
-        --ar='ar-lib lib.exe' \
+        --ar='ar lib.exe' \
         --ranlib=: \
         --cc=cl.exe --host_cc=cl.exe --cxx=cl.exe --windres=rc.exe --ld=link.exe \
         --prefix=$UPLOAD_FOLDER \
