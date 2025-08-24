@@ -19,6 +19,7 @@ jobs:
       with:
         install: >-
           make
+          mingw-w64-x86_64-binutils
           yasm
         path-type: inherit
         update: true
