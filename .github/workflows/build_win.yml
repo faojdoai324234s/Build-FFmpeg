@@ -47,6 +47,7 @@ jobs:
         --arch=x86_64 \
         --target-os=win64 \
         --toolchain=msvc \
+        --ar='ar-lib lib.exe' \
         --prefix=$UPLOAD_FOLDER \
         --enable-gpl \
         --enable-static \
