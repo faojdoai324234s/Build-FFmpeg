@@ -19,6 +19,7 @@ jobs:
       with:
         install: >-
           make
+          mingw-w64-x86_64-binutils
           yasm
         path-type: inherit
         update: true
@@ -26,7 +27,7 @@ jobs:
     - name: Setup MSYS2
       shell: msys2 {0}
       run: mv /usr/bin/link.exe /usr/bin/link.exe.bak
-        
+      
     - name: Clone FFmpeg
       shell: cmd
       run: |
@@ -41,15 +42,17 @@ jobs:
       env:
         UPLOAD_FOLDER: ${{github.workspace}}\upload
       run: |
-        CC=cl
         ./configure \
         --arch=x86_64 \
         --target-os=win64 \
         --toolchain=msvc \
+        --ar='ar lib.exe' \
+        --ranlib=: \
+        --cc=cl.exe --host_cc=cl.exe --cxx=cl.exe --windres=rc.exe --ld=link.exe \
         --prefix=$UPLOAD_FOLDER \
         --enable-gpl \
-        --disable-static \
-        --enable-shared \
+        --enable-static \
+        --disable-shared \
         --disable-all \
         --disable-everything \
         --disable-doc \
