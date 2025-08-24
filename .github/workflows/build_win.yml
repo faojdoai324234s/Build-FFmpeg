@@ -23,6 +23,7 @@ jobs:
         git clone https://github.com/microsoft/vcpkg
         cd vcpkg
         copy /y /v ${{github.workspace}}\${{ env.triplet }}.cmake triplets
+        copy /y /v ${{github.workspace}}\portfile.cmake ports\ffmpeg
         vcpkg install ffmpeg[core]:${{ env.triplet }}
       
     - name: Upload artifact
