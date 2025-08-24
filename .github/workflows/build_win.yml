@@ -26,7 +26,13 @@ jobs:
     - name: Setup MSYS2
       shell: msys2 {0}
       run: mv /usr/bin/link.exe /usr/bin/link.exe.bak
-        
+      
+    - name: Check ar
+      shell: msys2 {0}
+      run: |
+        which ar
+        ar --version
+      
     - name: Clone FFmpeg
       shell: cmd
       run: |
